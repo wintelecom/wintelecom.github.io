@@ -584,9 +584,18 @@
         logoEmpresa.setAttribute('src', window.siteConfig.logo);
       }
     }
-    // WhatsApp link
-    var whatsappLink = document.getElementById('whatsapp-link');
-    if (whatsappLink) whatsappLink.setAttribute('href', 'https://wa.me/' + window.siteConfig.whatsapp);
+// WhatsApp link
+var whatsappLink = document.getElementById('whatsapp-link');
+if (whatsappLink) whatsappLink.setAttribute('href', 'https://wa.me/' + window.siteConfig.whatsapp);
+
+// Links do WhatsApp no herói (classe comum) - atualiza dinamicamente
+var whatsappLinks = document.querySelectorAll('.js-whatsapp-link');
+if (whatsappLinks && whatsappLinks.length && window.siteConfig && window.siteConfig.whatsapp) {
+  var waHrefAll = 'https://wa.me/' + window.siteConfig.whatsapp;
+  whatsappLinks.forEach(function(link) {
+    link.setAttribute('href', waHrefAll);
+  });
+}
     // Footer empresa
     var footerEmpresa = document.getElementById('footer-empresa');
     if (footerEmpresa) footerEmpresa.innerText = 'Provedor de internet de alta velocidade com a melhor qualidade e atendimento da região.';

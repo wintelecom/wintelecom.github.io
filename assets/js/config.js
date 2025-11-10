@@ -5,10 +5,10 @@ window.siteConfig = {
   descricao: 'Internet fibra óptica rápida e confiável em Castanhal e região. Planos a partir de R$ 79,00/mês, suporte humano e instalação rápida.',
   // Palavras-chave para SEO
   keywords: 'internet, fibra óptica, provedor, Castanhal, Eletro.nets, planos',
-  // Número do WhatsApp com código do país e DDD
-  whatsapp: '5591988503676',
+// Número do WhatsApp com código do país e DDD
+whatsapp: '5591981521120',
   // Telefone formatado para exibição
-  phoneDisplay: '+55 (91) 98850-3676',
+phoneDisplay: '91 9 8152-1120',
   // Usuário do Instagram
   instagram: 'shopping_net123',
   // Endereço comercial completo (rua, bairro, referência)
