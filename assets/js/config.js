@@ -65,5 +65,5 @@ window.siteConfig = {
     }
   ],
   // Caminho para o logo
-  logo: 'assets/img/logo.png'
+  logo: 'assets/img/logo2.png'
 }; 
