@@ -1,6 +1,6 @@
 window.siteConfig = {
   // Nome fantasia da empresa
-  empresa: 'Eletro.nets',
+  empresa: 'Eletro Nets',
   // Descrição curta para SEO
   descricao: 'Internet fibra óptica rápida e confiável em Castanhal e região. Planos a partir de R$ 79,00/mês, suporte humano e instalação rápida.',
   // Palavras-chave para SEO
@@ -10,7 +10,7 @@ whatsapp: '5591981521120',
   // Telefone formatado para exibição
 phoneDisplay: '91 9 8152-1120',
   // Usuário do Instagram
-  instagram: 'shopping_net123',
+  instagram: '',
   // Endereço comercial completo (rua, bairro, referência)
   // Formato esperado: 'Rua/Logradouro, Bairro, Referência/Complemento'
   // Baseado em cadastro oficial: Rodovia PA-127 Km 07, Zona Rural, CEP 68740-970 (Castanhal - PA)
