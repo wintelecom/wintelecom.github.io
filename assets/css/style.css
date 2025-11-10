@@ -5124,8 +5124,11 @@ body.dark-mode .cs_hero_subtitle {
   display: flex;
   flex-direction: column;
 }
-#beneficios .cs_card_subtitle {
+/* #beneficios .cs_card_subtitle {
   margin-top: auto;
+} */
+ #beneficios .cs_card_subtitle {
+    margin-top: unset;
 }
 .cs_testimonial.cs_style_1.cs_orange_bg {
   background-color: rgba(255, 85, 40, 0.10);
