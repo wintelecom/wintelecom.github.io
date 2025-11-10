@@ -489,56 +489,65 @@
     });
   }
 
-  // Depoimentos Slider
+  // Depoimentos Slider - usa slick se disponível, senão fallback drag
   document.addEventListener('DOMContentLoaded', function() {
-    const testimonialsSlider = document.querySelector('.cs_testimonials_slider');
-    if (testimonialsSlider) {
+    const sliderEl = document.querySelector('.cs_testimonials_slider');
+    if (!sliderEl) return;
+    if (window.jQuery && typeof jQuery(sliderEl).slick === 'function') {
+      jQuery(sliderEl).not('.slick-initialized').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        arrows: false,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        speed: 600,
+        responsive: [
+          { breakpoint: 992, settings: { slidesToShow: 2 } },
+          { breakpoint: 576, settings: { slidesToShow: 1 } }
+        ]
+      });
+    } else {
+      // Fallback: arrastar para deslizar
       let isDown = false;
       let startX;
       let scrollLeft;
-
-      testimonialsSlider.addEventListener('mousedown', (e) => {
+      sliderEl.addEventListener('mousedown', (e) => {
         isDown = true;
-        testimonialsSlider.style.cursor = 'grabbing';
-        startX = e.pageX - testimonialsSlider.offsetLeft;
-        scrollLeft = testimonialsSlider.scrollLeft;
+        sliderEl.style.cursor = 'grabbing';
+        startX = e.pageX - sliderEl.offsetLeft;
+        scrollLeft = sliderEl.scrollLeft;
       });
-
-      testimonialsSlider.addEventListener('mouseleave', () => {
+      sliderEl.addEventListener('mouseleave', () => {
         isDown = false;
-        testimonialsSlider.style.cursor = 'grab';
+        sliderEl.style.cursor = 'grab';
       });
-
-      testimonialsSlider.addEventListener('mouseup', () => {
+      sliderEl.addEventListener('mouseup', () => {
         isDown = false;
-        testimonialsSlider.style.cursor = 'grab';
+        sliderEl.style.cursor = 'grab';
       });
-
-      testimonialsSlider.addEventListener('mousemove', (e) => {
+      sliderEl.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
-        const x = e.pageX - testimonialsSlider.offsetLeft;
+        const x = e.pageX - sliderEl.offsetLeft;
         const walk = (x - startX) * 2;
-        testimonialsSlider.scrollLeft = scrollLeft - walk;
+        sliderEl.scrollLeft = scrollLeft - walk;
       });
-
-      // Touch events
-      testimonialsSlider.addEventListener('touchstart', (e) => {
+      sliderEl.addEventListener('touchstart', (e) => {
         isDown = true;
-        startX = e.touches[0].pageX - testimonialsSlider.offsetLeft;
-        scrollLeft = testimonialsSlider.scrollLeft;
+        startX = e.touches[0].pageX - sliderEl.offsetLeft;
+        scrollLeft = sliderEl.scrollLeft;
       });
-
-      testimonialsSlider.addEventListener('touchend', () => {
+      sliderEl.addEventListener('touchend', () => {
         isDown = false;
       });
-
-      testimonialsSlider.addEventListener('touchmove', (e) => {
+      sliderEl.addEventListener('touchmove', (e) => {
         if (!isDown) return;
         e.preventDefault();
-        const x = e.touches[0].pageX - testimonialsSlider.offsetLeft;
+        const x = e.touches[0].pageX - sliderEl.offsetLeft;
         const walk = (x - startX) * 2;
-        testimonialsSlider.scrollLeft = scrollLeft - walk;
+        sliderEl.scrollLeft = scrollLeft - walk;
       });
     }
   });
@@ -547,9 +556,26 @@
   if (window.siteConfig) {
     // Nome da empresa no título
     document.title = window.siteConfig.empresa + ' - Provedor de Internet';
+    // Comentário (PT-BR): se existir um span dentro do <title> com id empresa-title, atualiza também
+    var empresaTitleEl = document.getElementById('empresa-title');
+    if (empresaTitleEl) empresaTitleEl.innerText = window.siteConfig.empresa;
     // Meta author
     var metaEmpresa = document.getElementById('meta-empresa');
     if (metaEmpresa) metaEmpresa.setAttribute('content', window.siteConfig.empresa);
+    // Meta description e keywords
+    var metaDescricao = document.getElementById('meta-descricao');
+    if (metaDescricao && window.siteConfig.descricao) metaDescricao.setAttribute('content', window.siteConfig.descricao);
+    var metaKeywords = document.getElementById('meta-keywords');
+    if (metaKeywords && window.siteConfig.keywords) metaKeywords.setAttribute('content', window.siteConfig.keywords);
+    // Open Graph tags
+    var ogTitle = document.getElementById('og-title');
+    if (ogTitle) ogTitle.setAttribute('content', window.siteConfig.empresa + ' - Provedor de Internet');
+    var ogDescription = document.getElementById('og-description');
+    if (ogDescription && window.siteConfig.descricao) ogDescription.setAttribute('content', window.siteConfig.descricao);
+    var ogImage = document.getElementById('og-image');
+    if (ogImage) ogImage.setAttribute('content', window.siteConfig.logo || 'assets/img/logo.png');
+    var ogUrl = document.getElementById('og-url');
+    if (ogUrl) ogUrl.setAttribute('content', window.location.href);
     // Logo src e alt
     var logoEmpresa = document.getElementById('logo-empresa');
     if (logoEmpresa) {
@@ -567,36 +593,214 @@
     // Footer CNPJ e endereço
     var footerCnpj = document.getElementById('footer-cnpj');
     if (footerCnpj) footerCnpj.innerText = 'CNPJ: ' + window.siteConfig.cnpj;
+    var footerRazao = document.getElementById('footer-razao');
+    if (footerRazao && window.siteConfig.razaoSocial) footerRazao.innerText = 'Razão Social: ' + window.siteConfig.razaoSocial;
     var footerEndereco = document.getElementById('footer-endereco');
     if (footerEndereco) footerEndereco.innerText = window.siteConfig.endereco.split(',')[0];
     var footerBairro = document.getElementById('footer-bairro');
     if (footerBairro) footerBairro.innerText = window.siteConfig.endereco.split(',')[1] ? window.siteConfig.endereco.split(',')[1].trim() : '';
     var footerRef = document.getElementById('footer-ref');
     if (footerRef) footerRef.innerText = window.siteConfig.endereco.split(',')[2] ? window.siteConfig.endereco.split(',')[2].trim() : '';
+
+    // Footer email (texto e link) - atualiza dinamicamente
+    var footerEmail = document.getElementById('footer-email');
+    if (footerEmail) {
+      var emailLink = footerEmail.querySelector('a');
+      if (emailLink) {
+        emailLink.setAttribute('href', 'mailto:' + window.siteConfig.email);
+        emailLink.innerText = window.siteConfig.email;
+      } else {
+        footerEmail.innerText = window.siteConfig.email;
+      }
+    }
+
+    // Footer WhatsApp (texto e link) - atualiza dinamicamente
+    var footerWhatsapp = document.getElementById('footer-whatsapp');
+    if (footerWhatsapp) {
+      var whatsappAnchor = footerWhatsapp.querySelector('a');
+      var phoneDisplay = window.siteConfig.phoneDisplay || ('+55 ' + window.siteConfig.whatsapp);
+      if (whatsappAnchor) {
+        whatsappAnchor.setAttribute('href', 'https://wa.me/' + window.siteConfig.whatsapp);
+        whatsappAnchor.innerText = phoneDisplay;
+      } else {
+        footerWhatsapp.innerText = phoneDisplay;
+      }
+    }
+
+    // Social links dinâmicos (Instagram e WhatsApp ícone no footer)
+    var instagramLinkEl = document.getElementById('instagram-link');
+    if (instagramLinkEl && window.siteConfig.instagram) {
+      var igHandleOrUrl = window.siteConfig.instagram;
+      if (!/^https?:\/\//.test(igHandleOrUrl)) {
+        igHandleOrUrl = 'https://instagram.com/' + igHandleOrUrl.replace(/^@/, '');
+      }
+      instagramLinkEl.setAttribute('href', igHandleOrUrl);
+    }
+    var whatsappSocialLinkEl = document.getElementById('whatsapp-social-link');
+    if (whatsappSocialLinkEl) whatsappSocialLinkEl.setAttribute('href', 'https://wa.me/' + window.siteConfig.whatsapp);
+
+    // Comentário (PT-BR): atualizar o texto de copyright no rodapé com o nome da empresa
+    var copyrightEl = document.querySelector('.cs_copyright');
+    if (copyrightEl) {
+      var year = new Date().getFullYear();
+      copyrightEl.innerText = '© ' + year + ' ' + window.siteConfig.empresa + '. Todos os direitos reservados.';
+    }
+  }
+
+  // Renderizar planos dinamicamente a partir do siteConfig
+  if (window.siteConfig && window.siteConfig.planos && document.getElementById('plans-list')) {
+    var plansList = document.getElementById('plans-list');
+    plansList.innerHTML = '';
+
+    window.siteConfig.planos.forEach(function(plan, idx) {
+      // Comentário (PT-BR): prepara preço exibido com "/mês" e mensagem para WhatsApp
+      var displayPrice = /mês/i.test(plan.preco) ? plan.preco : (plan.preco + '/mês');
+      var waMessage = 'Olá! Quero contratar o plano ' + plan.nome + ' por ' + displayPrice + '.';
+      var waHref = 'https://wa.me/' + window.siteConfig.whatsapp + '?text=' + encodeURIComponent(waMessage);
+
+      // Comentário (PT-BR): badge de recomendado
+      var badgeHtml = plan.recomendado ? '<span class="cs_badge_recommended">Recomendado</span>' : '';
+
+      // Comentário (PT-BR): detalhes em lista se houver beneficios, senão parágrafo simples
+      var detailsId = 'plan-details-' + idx;
+      var detailsHtml;
+      if (Array.isArray(plan.beneficios) && plan.beneficios.length) {
+        detailsHtml = '<ul id="' + detailsId + '" class="cs_plan_features cs_fs_16 cs_body_color">' +
+          plan.beneficios.map(function(b){ return '<li>' + b + '</li>'; }).join('') +
+        '</ul>';
+      } else {
+        detailsHtml = '<p id="' + detailsId + '" class="cs_fs_16 cs_body_color">' + (plan.detalhes || '') + '</p>';
+      }
+
+      var planHtml = 
+        '<div class="col-lg-4 col-md-6">' +
+          '<div class="cs_card cs_style_1 cs_radius_15" data-plan-name="' + plan.nome + '">' +
+            '<div class="cs_plan_header">' +
+              '<h3 class="cs_fs_24 cs_bold cs_heading_color">' + plan.nome + '</h3>' +
+            '</div>' +
+            detailsHtml +
+            // Comentário (PT-BR): rodapé com preço alinhado ao final e CTA
+            '<div class="cs_plan_footer">' +
+              '<div class="cs_fs_28 cs_semibold cs_orange_color cs_plan_price">' + displayPrice + '</div>' +
+              '<a href="' + waHref + '" class="cs_btn cs_style_1 cs_orange_bg cs_white_color cs_radius_30" data-plan="' + plan.nome + '" aria-label="Assinar ' + plan.nome + ' por ' + displayPrice + ' no WhatsApp" aria-describedby="' + detailsId + '"><i class="fa-brands fa-whatsapp"></i> <span class="cs_btn_text">Assinar no WhatsApp</span></a>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      plansList.innerHTML += planHtml;
+    });
+
+    // Comentário (PT-BR): equaliza alturas dos cards de planos após renderização
+    if (typeof equalizePlanCardHeights === 'function') {
+      setTimeout(equalizePlanCardHeights, 0);
+    }
   }
 
   // Renderizar depoimentos dinamicamente
   if (window.depoimentos && document.getElementById('depoimentos-list')) {
     var depoimentosList = document.getElementById('depoimentos-list');
     depoimentosList.innerHTML = '';
+
+    // Função: equaliza a altura dos cards de depoimentos ao maior
+    function equalizeTestimonialHeights() {
+      var list = document.getElementById('depoimentos-list');
+      if (!list) return;
+      var cards = list.querySelectorAll('.cs_testimonial');
+      if (!cards || !cards.length) return;
+      // Resetar alturas antes de medir
+      cards.forEach(function(card){
+        card.style.minHeight = '0px';
+        card.style.height = 'auto';
+      });
+      // Medir maior altura
+      var maxH = 0;
+      cards.forEach(function(card){
+        var h = card.offsetHeight;
+        if (h > maxH) maxH = h;
+      });
+      // Aplicar mesma altura a todos
+      cards.forEach(function(card){
+        card.style.minHeight = maxH + 'px';
+      });
+    }
     window.depoimentos.forEach(function(dep) {
       var html = `
         <div class="cs_testimonial cs_style_1 ${dep.cor} cs_radius_15">
           <div class="cs_avatar cs_style_1">
             <div class="cs_avatar_thumbnail cs_radius_50">
-              <img src="${dep.avatar}" alt="Avatar">
+              <img src="${dep.avatar}" alt="Avatar" loading="lazy">
             </div>
             <div class="cs_avatar_info">
-              <h3 class="cs_avatar_title cs_fs_21 cs_white_color">${dep.nome}</h3>
+              <h3 class="cs_avatar_title cs_fs_21 cs_heading_color">${dep.nome}</h3>
               <p class="cs_avatar_subtitle cs_heading_color mb-0">Cliente desde ${dep.desde}</p>
             </div>
           </div>
-          <blockquote class="cs_testimonial_subtitle cs_fs_18 cs_white_color">
+          <blockquote class="cs_testimonial_subtitle cs_fs_18 cs_heading_color">
             "${dep.texto}"
           </blockquote>
         </div>
       `;
       depoimentosList.innerHTML += html;
     });
+    // Inicializa slick após renderização, se disponível
+    if (window.jQuery && typeof jQuery(depoimentosList).slick === 'function') {
+      var $slider = jQuery(depoimentosList);
+      // Recalcular alturas quando o slick inicia e reposiciona
+      $slider.on('init setPosition reInit', function(){
+        equalizeTestimonialHeights();
+      });
+      $slider.not('.slick-initialized').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        arrows: false,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        speed: 600,
+        responsive: [
+          { breakpoint: 992, settings: { slidesToShow: 2 } },
+          { breakpoint: 576, settings: { slidesToShow: 1 } }
+        ]
+      });
+      // Garantir ajuste inicial
+      setTimeout(equalizeTestimonialHeights, 0);
+      window.addEventListener('resize', equalizeTestimonialHeights);
+    }
+    else {
+      // Fallback sem slick: ainda assim iguala
+      setTimeout(equalizeTestimonialHeights, 0);
+      window.addEventListener('resize', equalizeTestimonialHeights);
+    }
   }
+
+  /*--------------------------------------------------------------
+    Planos: Equalização de Altura
+  --------------------------------------------------------------*/
+  // Comentário (PT-BR): garante que todos os cards de planos tenham a mesma altura
+  function equalizePlanCardHeights() {
+    var list = document.getElementById('plans-list');
+    if (!list) return;
+    var cards = list.querySelectorAll('.cs_card.cs_style_1');
+    if (!cards || !cards.length) return;
+
+    // Resetar antes de medir
+    cards.forEach(function(card){
+      card.style.height = 'auto';
+      card.style.minHeight = '0px';
+    });
+
+    var maxH = 0;
+    cards.forEach(function(card){
+      var h = card.offsetHeight;
+      if (h > maxH) maxH = h;
+    });
+
+    cards.forEach(function(card){
+      card.style.height = maxH + 'px';
+    });
+  }
+
+  // Comentário (PT-BR): recalcula em redimensionamento
+  window.addEventListener('resize', equalizePlanCardHeights);
 })(jQuery); // End of use strict
