@@ -573,7 +573,7 @@
     var ogDescription = document.getElementById('og-description');
     if (ogDescription && window.siteConfig.descricao) ogDescription.setAttribute('content', window.siteConfig.descricao);
     var ogImage = document.getElementById('og-image');
-    if (ogImage) ogImage.setAttribute('content', window.siteConfig.logo || 'assets/img/logo.png');
+    if (ogImage) ogImage.setAttribute('content', window.siteConfig.logo || 'assets/img/logo2.png');
     var ogUrl = document.getElementById('og-url');
     if (ogUrl) ogUrl.setAttribute('content', window.location.href);
     // Logo src e alt
