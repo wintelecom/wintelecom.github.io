@@ -73,6 +73,10 @@ body {
   max-width: 100%;
 }
 
+#logo-empresa {
+  filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff);
+}
+
 /* Header Navigation Links - force white */
 .cs_nav_list a {
   color: #FFFFFF !important;
