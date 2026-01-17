@@ -1,0 +1,243 @@
+/* Win Telecom Color Palette */
+:root {
+  --cs-primary: #F37920;
+  /* Laranja Médio (Flat) */
+  --cs-secondary: #000000;
+  /* Preto */
+  --cs-accent: #FF9E46;
+  /* Laranja Claro (Iluminação) */
+  --cs-dark-orange: #D65A00;
+  /* Laranja Escuro (Sombra) */
+  --cs-white: #FFFFFF;
+  /* Branco */
+  --cs-gray: #666666;
+  --cs-heading: #111111;
+  --cs-body: #666666;
+  --cs-purple: #4B0082;
+  /* Roxo (Vibrante) */
+}
+
+/* Base Styles Overrides */
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  color: var(--cs-body);
+}
+
+.cs_orange_color {
+  color: var(--cs-primary) !important;
+}
+
+.cs_orange_bg {
+  background-color: var(--cs-primary) !important;
+}
+
+.cs_accent_bg {
+  background-color: var(--cs-primary) !important;
+}
+
+/* Replaced accent with primary for consistency */
+
+/* Gradient Text for "Win Telecom" feel if needed, or specific headings */
+.cs_text_gradient {
+  background: linear-gradient(to bottom, var(--cs-accent), var(--cs-dark-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3D/Gradient Effect on Buttons or special elements */
+.cs_btn.cs_style_1 {
+  background: linear-gradient(135deg, var(--cs-accent), var(--cs-dark-orange));
+  border: none;
+  box-shadow: 0 4px 15px rgba(243, 121, 32, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cs_btn.cs_style_1:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(243, 121, 32, 0.6);
+}
+
+.cs_btn.cs_style_1 i {
+  margin-right: 8px;
+}
+
+/* Hero Section */
+.cs_site_branding {
+  max-width: 200px;
+  display: block;
+}
+
+.cs_site_branding img {
+  max-height: 60px !important;
+  width: auto !important;
+  max-width: 100%;
+}
+
+/* Header Navigation Links - force white */
+.cs_nav_list a {
+  color: #FFFFFF !important;
+}
+
+.cs_nav_list a:hover {
+  color: var(--cs-accent) !important;
+}
+
+.cs_hero.cs_style_1 {
+  background-color: var(--cs-secondary);
+  /* Fallback black */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Hero content box - dark backdrop for contrast */
+.cs_hero_content {
+  background: transparent !important;
+}
+
+.cs_hero_text {
+  background: rgba(0, 0, 0, 0.6) !important;
+  padding: 20px 30px;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+}
+
+/* Ensure hero text is legible on dark background */
+.cs_hero_title {
+  color: var(--cs-white) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  line-height: 1.1 !important;
+  margin-bottom: 8px !important;
+}
+
+.cs_hero_subtitle {
+  color: #f0f0f0 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 8px !important;
+}
+
+.cs_hero_text .cs_btn_group {
+  margin-top: 5px !important;
+}
+
+/* Section Headings */
+.cs_section_subtitle {
+  color: var(--cs-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Cards */
+.cs_card.cs_style_1 {
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+  padding: 30px;
+}
+
+.cs_card.cs_style_1:hover {
+  border-color: var(--cs-primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Benefit Cards Icons */
+.cs_benefit_card .cs_card_icon i {
+  color: var(--cs-primary) !important;
+  /* Override existing red */
+  background: -webkit-linear-gradient(var(--cs-accent), var(--cs-dark-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Footer */
+.cs_footer {
+  background-color: #1a1a1a;
+}
+
+.cs_footer_widget_title {
+  color: var(--cs-white);
+  border-bottom: 2px solid var(--cs-primary);
+  display: inline-block;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+/* Scroll Up */
+.cs_scrollup {
+  background: linear-gradient(var(--cs-accent), var(--cs-dark-orange));
+}
+
+/* Testimonials */
+.cs_testimonial {
+  background-color: #f9f9f9;
+}
+
+.cs_testimonial.cs_orange_bg {
+  /* Example for variety if needed */
+  background-color: var(--cs-primary);
+  color: var(--cs-white);
+}
+
+/* Preloader */
+.cs_preloader_in span {
+  background-color: var(--cs-primary);
+}
+
+/* City Selector Tabs */
+.cs_tab_btn {
+  background-color: transparent;
+  border: 2px solid var(--cs-primary);
+  color: var(--cs-primary);
+  font-weight: 700;
+  padding: 10px 25px;
+  border-radius: 50px;
+  margin: 0 10px 10px 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-family: 'Nunito Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cs_tab_btn:hover {
+  transform: translateY(-2px);
+  background-color: rgba(243, 121, 32, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cs_tab_btn.active {
+  background: linear-gradient(135deg, var(--cs-accent), var(--cs-dark-orange));
+  color: var(--cs-white);
+  border-color: transparent;
+  box-shadow: 0 5px 15px rgba(243, 121, 32, 0.4);
+}
+
+/* Plan Features - Ensure visibility and icon */
+.cs_plan_features {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 25px;
+  text-align: left;
+}
+
+.cs_plan_features li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  color: var(--cs-body);
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.cs_plan_features li::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: var(--cs-primary);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 14px;
+}
