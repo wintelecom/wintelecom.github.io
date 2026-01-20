@@ -627,17 +627,22 @@
     // Footer empresa
     var footerEmpresa = document.getElementById('footer-empresa');
     if (footerEmpresa) footerEmpresa.innerText = 'Provedor de internet de alta velocidade com a melhor qualidade e atendimento da região.';
-    // Footer CNPJ e endereço
+    // Footer CNPJ e Razão Social
     var footerCnpj = document.getElementById('footer-cnpj');
     if (footerCnpj) footerCnpj.innerText = 'CNPJ: ' + window.siteConfig.cnpj;
     var footerRazao = document.getElementById('footer-razao');
-    if (footerRazao && window.siteConfig.razaoSocial) footerRazao.innerText = 'Razão Social: ' + window.siteConfig.razaoSocial;
+    if (footerRazao && window.siteConfig.razaoSocial) footerRazao.innerText = window.siteConfig.razaoSocial;
+
+    // Footer Endereço - completo em uma linha
     var footerEndereco = document.getElementById('footer-endereco');
-    if (footerEndereco) footerEndereco.innerText = window.siteConfig.endereco.split(',')[0];
-    var footerBairro = document.getElementById('footer-bairro');
-    if (footerBairro) footerBairro.innerText = window.siteConfig.endereco.split(',')[1] ? window.siteConfig.endereco.split(',')[1].trim() : '';
-    var footerRef = document.getElementById('footer-ref');
-    if (footerRef) footerRef.innerText = window.siteConfig.endereco.split(',')[2] ? window.siteConfig.endereco.split(',')[2].trim() : '';
+    if (footerEndereco) {
+      var enderecoSpan = footerEndereco.querySelector('span');
+      if (enderecoSpan) {
+        enderecoSpan.innerText = window.siteConfig.endereco;
+      } else {
+        footerEndereco.innerText = window.siteConfig.endereco;
+      }
+    }
 
     // Logo Footer
     var logoFooter = document.getElementById('logo-footer');

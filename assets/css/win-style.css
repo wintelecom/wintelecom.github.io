@@ -245,3 +245,28 @@ body {
   top: 2px;
   font-size: 14px;
 }
+
+/* Footer Info List with Icons */
+.cs_footer_info_list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.cs_footer_info_list li i {
+  color: var(--cs-primary);
+  font-size: 16px;
+  min-width: 18px;
+  margin-top: 3px;
+}
+
+.cs_footer_info_list li span,
+.cs_footer_info_list li a {
+  flex: 1;
+  line-height: 1.5;
+}
+
+.cs_footer_info_list li a:hover {
+  color: var(--cs-primary);
+}
