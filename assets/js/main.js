@@ -813,8 +813,15 @@
   }
 
   // Renderizar depoimentos dinamicamente
-  if (window.depoimentos && document.getElementById('depoimentos-list')) {
-    var depoimentosList = document.getElementById('depoimentos-list');
+  var depoimentosSection = document.getElementById('depoimentos');
+  var depoimentosList = document.getElementById('depoimentos-list');
+
+  // Se não houver depoimentos ou array vazio, esconde a seção toda
+  if (!window.depoimentos || !window.depoimentos.length || !depoimentosList) {
+    if (depoimentosSection) {
+      depoimentosSection.style.display = 'none';
+    }
+  } else {
     depoimentosList.innerHTML = '';
 
     // Função: equaliza a altura dos cards de depoimentos ao maior

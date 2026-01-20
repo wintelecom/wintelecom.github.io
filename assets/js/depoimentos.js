@@ -1,5 +1,5 @@
 window.depoimentos = [
-  {
+  /* {
     nome: 'Carlos Eduardo',
     avatar: 'assets/img/avatar_br_1.png',
     desde: '2023',
@@ -96,5 +96,5 @@ window.depoimentos = [
     desde: '2024',
     texto: 'Nossa startup precisa de velocidade e agilidade. A Win Telecom é parceira do nosso crescimento.',
     cor: 'cs_orange_bg cs_white_color'
-  }
+  } */
 ];
