@@ -77,6 +77,10 @@ body {
   filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff);
 }
 
+#logo-footer {
+  filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff);
+}
+
 /* Header Navigation Links - force white */
 .cs_nav_list a {
   color: #FFFFFF !important;
