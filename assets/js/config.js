@@ -10,9 +10,9 @@ window.siteConfig = {
   // Palavras-chave para SEO
   keywords: 'internet, fibra óptica, provedor, Wintelecom, planos, Abaetetuba, Oeiras do Pará, Ponta de Pedras, Pará',
   // Número do WhatsApp com código do país e DDD
-  whatsapp: '5591992608684',
+  whatsapp: '559184986417',
   // Telefone formatado para exibição
-  phoneDisplay: '(91) 99260-8684',
+  phoneDisplay: '+55 91 8498-6417',
   // E-mail de contato principal
   email: 'wintelecon.23@gmail.com',
   // Usuário do Instagram
@@ -36,7 +36,7 @@ window.siteConfig = {
   // Planos disponíveis separados por cidade
   planosPorCidade: {
     'Abaetetuba': [
-      {
+      /* {
         nome: '200 Mega',
         preco: 'R$ 89,90',
         detalhes: 'Internet estável para o dia a dia.',
@@ -54,10 +54,17 @@ window.siteConfig = {
         preco: 'R$ 149,90',
         detalhes: 'Ultra velocidade para gamers e heavy users.',
         beneficios: ['Instalação Gratuita', 'Wi-Fi Gratuito', 'Atendimento Humanizado', 'Máxima Performance']
+      }, */
+      {
+        nome: 'Consultar Planos',
+        preco: 'A Consultar',
+        detalhes: 'Melhor custo-benefício da região.',
+        recomendado: true,
+        beneficios: ['Entre em contato para saber mais']
       }
     ],
     'Oeiras do Pará': [
-      {
+      /* {
         nome: '200 Mega',
         preco: 'R$ 89,90',
         detalhes: 'Internet estável para o dia a dia.',
@@ -69,10 +76,17 @@ window.siteConfig = {
         detalhes: 'Melhor custo-benefício da região.',
         recomendado: true,
         beneficios: ['Instalação Gratuita', 'Wi-Fi Gratuito']
+      }, */
+      {
+        nome: 'Consultar Planos',
+        preco: 'A Consultar',
+        detalhes: 'Melhor custo-benefício da região.',
+        recomendado: true,
+        beneficios: ['Entre em contato para saber mais']
       }
     ],
     'Ponta de Pedras': [
-      {
+      /* {
         nome: '200 Mega',
         preco: 'R$ 89,90',
         detalhes: 'Internet estável para o dia a dia.',
@@ -84,6 +98,13 @@ window.siteConfig = {
         detalhes: 'Melhor custo-benefício da região.',
         recomendado: true,
         beneficios: ['Instalação Gratuita', 'Wi-Fi Gratuito']
+      }, */
+      {
+        nome: 'Consultar Planos',
+        preco: 'A Consultar',
+        detalhes: 'Melhor custo-benefício da região.',
+        recomendado: true,
+        beneficios: ['Entre em contato para saber mais']
       }
     ]
   },
