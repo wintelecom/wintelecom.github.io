@@ -691,6 +691,20 @@
       var year = new Date().getFullYear();
       copyrightEl.innerText = '© ' + year + ' ' + window.siteConfig.empresa + '. Todos os direitos reservados.';
     }
+
+    // Central do Assinante - exibe apenas se configurado
+    if (window.siteConfig.centralAssinante) {
+      var menuCentral = document.getElementById('menu-central-assinante');
+      if (menuCentral) {
+        menuCentral.style.display = '';
+        var centralLink = menuCentral.querySelector('a');
+        if (centralLink) {
+          centralLink.setAttribute('href', window.siteConfig.centralAssinante);
+          centralLink.setAttribute('target', '_blank');
+          centralLink.setAttribute('rel', 'noopener noreferrer');
+        }
+      }
+    }
   }
 
   // Renderizar seletor de cidades e planos dinamicamente

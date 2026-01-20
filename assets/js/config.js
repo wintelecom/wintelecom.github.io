@@ -88,5 +88,7 @@ window.siteConfig = {
     ]
   },
   // Caminho para o logo (Reverted)
-  logo: 'assets/img/logo2.png'
+  logo: 'assets/img/logo2.png',
+  // URL da Central do Assinante (opcional - se não definido, o link não aparece no menu)
+  centralAssinante: 'https://minha.wintelecom.com.br'
 }; 
