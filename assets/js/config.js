@@ -23,6 +23,16 @@ window.siteConfig = {
   fundacao: '18/05/2023',
   // Atividade principal
   atividadePrincipal: 'J-6110-8/03 - Serviços de comunicação multimídia - SCM',
+  // Hero Section
+  hero: {
+    title: 'Win Telecom:',
+    subtitle: 'Conexão que te leva além',
+    description: 'A melhor fibra óptica para você e sua família.'
+  },
+  hero2: {
+    title: 'Internet Fibra Óptica',
+    subtitle: 'A melhor experiência de navegação com estabilidade e velocidade garantida.'
+  },
   // Planos disponíveis separados por cidade
   planosPorCidade: {
     'Abaetetuba': [

@@ -596,6 +596,34 @@
         link.setAttribute('href', waHrefAll);
       });
     }
+    // Hero Section 1
+    if (window.siteConfig.hero) {
+      if (window.siteConfig.hero.title) {
+        var heroTitle = document.getElementById('hero-title');
+        if (heroTitle) heroTitle.innerText = window.siteConfig.hero.title;
+      }
+      if (window.siteConfig.hero.subtitle) {
+        var heroSubtitle = document.getElementById('hero-subtitle');
+        if (heroSubtitle) heroSubtitle.innerText = window.siteConfig.hero.subtitle;
+      }
+      if (window.siteConfig.hero.description) {
+        var heroDescription = document.getElementById('hero-description');
+        if (heroDescription) heroDescription.innerText = window.siteConfig.hero.description;
+      }
+    }
+
+    // Hero Section 2
+    if (window.siteConfig.hero2) {
+      if (window.siteConfig.hero2.title) {
+        var hero2Title = document.getElementById('hero2-title');
+        if (hero2Title) hero2Title.innerText = window.siteConfig.hero2.title;
+      }
+      if (window.siteConfig.hero2.subtitle) {
+        var hero2Subtitle = document.getElementById('hero2-subtitle');
+        if (hero2Subtitle) hero2Subtitle.innerText = window.siteConfig.hero2.subtitle;
+      }
+    }
+
     // Footer empresa
     var footerEmpresa = document.getElementById('footer-empresa');
     if (footerEmpresa) footerEmpresa.innerText = 'Provedor de internet de alta velocidade com a melhor qualidade e atendimento da região.';
@@ -610,6 +638,15 @@
     if (footerBairro) footerBairro.innerText = window.siteConfig.endereco.split(',')[1] ? window.siteConfig.endereco.split(',')[1].trim() : '';
     var footerRef = document.getElementById('footer-ref');
     if (footerRef) footerRef.innerText = window.siteConfig.endereco.split(',')[2] ? window.siteConfig.endereco.split(',')[2].trim() : '';
+
+    // Logo Footer
+    var logoFooter = document.getElementById('logo-footer');
+    if (logoFooter) {
+      logoFooter.setAttribute('alt', window.siteConfig.empresa + ' Logo');
+      if (window.siteConfig.logo) {
+        logoFooter.setAttribute('src', window.siteConfig.logo);
+      }
+    }
 
     // Footer email (texto e link) - atualiza dinamicamente
     var footerEmail = document.getElementById('footer-email');
