@@ -25,13 +25,14 @@ window.siteConfig = {
   atividadePrincipal: 'J-6110-8/03 - Serviços de comunicação multimídia - SCM',
   // Hero Section
   hero: {
-    title: 'Win Telecom:',
-    subtitle: 'Conexão que te leva além',
-    description: 'A melhor fibra óptica para você e sua família.'
+    title: 'Você merece a melhor conexão!',
+    subtitle: 'Vem ser Win!',
+    description: ''
   },
   hero2: {
-    title: 'Internet Fibra Óptica',
-    subtitle: 'A melhor experiência de navegação com estabilidade e velocidade garantida.'
+    title: 'Você merece a melhor conexão!',
+    subtitle: 'Vem ser Win!',
+    description: ''
   },
   // Planos disponíveis separados por cidade
   planosPorCidade: {
