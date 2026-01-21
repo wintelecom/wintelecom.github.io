@@ -1,20 +1,27 @@
-/* Win Telecom Color Palette */
+/* Win Telecom Color Palette - Baseado no Instagram @wintelecom.fibra */
 :root {
+  /* Cores Primárias - Laranja */
   --cs-primary: #F37920;
-  /* Laranja Médio (Flat) */
-  --cs-secondary: #000000;
-  /* Preto */
+  /* Laranja Médio (Principal da marca) */
   --cs-accent: #FF9E46;
   /* Laranja Claro (Iluminação) */
   --cs-dark-orange: #D65A00;
   /* Laranja Escuro (Sombra) */
+
+  /* Tons Adicionais de Laranja */
+  --cs-light-orange: #FFB870;
+  /* Laranja Extra Claro */
+  --cs-bright-orange: #FF7A00;
+  /* Laranja Brilhante */
+
+  /* Neutros */
+  --cs-secondary: #121212;
+  /* Preto Grafite Escuro */
   --cs-white: #FFFFFF;
   /* Branco */
   --cs-gray: #666666;
   --cs-heading: #111111;
   --cs-body: #666666;
-  --cs-purple: #4B0082;
-  /* Roxo (Vibrante) */
 }
 
 /* Base Styles Overrides */
@@ -41,24 +48,48 @@ body {
 .cs_text_gradient {
   background: linear-gradient(to bottom, var(--cs-accent), var(--cs-dark-orange));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* 3D/Gradient Effect on Buttons or special elements */
+/* Botões - Cores Sólidas */
 .cs_btn.cs_style_1 {
-  background: linear-gradient(135deg, var(--cs-accent), var(--cs-dark-orange));
+  background-color: var(--cs-primary) !important;
   border: none;
   box-shadow: 0 4px 15px rgba(243, 121, 32, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  color: var(--cs-white) !important;
+}
+
+/* Desabilitar o pseudo-elemento de animação que causa problemas */
+.cs_btn.cs_style_1::before {
+  display: none !important;
 }
 
 .cs_btn.cs_style_1:hover {
   transform: translateY(-2px);
+  background-color: var(--cs-dark-orange) !important;
   box-shadow: 0 6px 20px rgba(243, 121, 32, 0.6);
+  color: var(--cs-white) !important;
 }
 
+/* Garantir ícones brancos nos botões */
 .cs_btn.cs_style_1 i {
   margin-right: 8px;
+  color: var(--cs-white) !important;
+}
+
+.cs_btn.cs_style_1:hover i {
+  color: var(--cs-white) !important;
+}
+
+/* Texto do botão sempre branco */
+.cs_btn.cs_style_1 .cs_btn_text {
+  color: var(--cs-white) !important;
+}
+
+.cs_btn.cs_style_1:hover .cs_btn_text {
+  color: var(--cs-white) !important;
 }
 
 /* Hero Section */
@@ -148,18 +179,14 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* Benefit Cards Icons */
+/* Benefit Cards Icons - Cor sólida para bom contraste */
 .cs_benefit_card .cs_card_icon i {
   color: var(--cs-primary) !important;
-  /* Override existing red */
-  background: -webkit-linear-gradient(var(--cs-accent), var(--cs-dark-orange));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /* Footer */
 .cs_footer {
-  background-color: #1a1a1a;
+  background-color: var(--cs-secondary);
 }
 
 .cs_footer_widget_title {
@@ -170,9 +197,9 @@ body {
   margin-bottom: 20px;
 }
 
-/* Scroll Up */
+/* Scroll Up - Cor sólida */
 .cs_scrollup {
-  background: linear-gradient(var(--cs-accent), var(--cs-dark-orange));
+  background-color: var(--cs-primary);
 }
 
 /* Testimonials */
@@ -214,7 +241,7 @@ body {
 }
 
 .cs_tab_btn.active {
-  background: linear-gradient(135deg, var(--cs-accent), var(--cs-dark-orange));
+  background-color: var(--cs-primary);
   color: var(--cs-white);
   border-color: transparent;
   box-shadow: 0 5px 15px rgba(243, 121, 32, 0.4);
