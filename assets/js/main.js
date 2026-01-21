@@ -815,11 +815,19 @@
   // Renderizar depoimentos dinamicamente
   var depoimentosSection = document.getElementById('depoimentos');
   var depoimentosList = document.getElementById('depoimentos-list');
+  var menuDepoimentos = document.getElementById('menu-depoimentos');
+  var footerLinkDepoimentos = document.getElementById('footer-link-depoimentos');
 
-  // Se não houver depoimentos ou array vazio, esconde a seção toda
+  // Se não houver depoimentos ou array vazio, esconde a seção toda e links de navegação
   if (!window.depoimentos || !window.depoimentos.length || !depoimentosList) {
     if (depoimentosSection) {
       depoimentosSection.style.display = 'none';
+    }
+    if (menuDepoimentos) {
+      menuDepoimentos.style.display = 'none';
+    }
+    if (footerLinkDepoimentos) {
+      footerLinkDepoimentos.style.display = 'none';
     }
   } else {
     depoimentosList.innerHTML = '';
