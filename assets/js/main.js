@@ -709,6 +709,17 @@
           centralLink.setAttribute('rel', 'noopener noreferrer');
         }
       }
+      // Footer - Central do Assinante
+      var footerCentral = document.getElementById('footer-central-assinante');
+      if (footerCentral) {
+        footerCentral.style.display = '';
+        var footerCentralLink = footerCentral.querySelector('a');
+        if (footerCentralLink) {
+          footerCentralLink.setAttribute('href', window.siteConfig.centralAssinante);
+          footerCentralLink.setAttribute('target', '_blank');
+          footerCentralLink.setAttribute('rel', 'noopener noreferrer');
+        }
+      }
     }
   }
 
